@@ -24,18 +24,21 @@ class PhotoContainer extends React.Component {
 		//If the images are still loading
 		if (this.props.loading) {
 			return (
-				<p>Loading...</p>
+				<div className="photo-container">
+					<h2>{this.props.title}</h2>
+					<p>Loading...</p>
+				</div>
 			);
 		} else {
 			//if urls were found
 			if (this.props.photos.length > 0) {
 				return (
 					<div className="photo-container">
-						<h2>Results</h2>
+						<h2>{this.props.title}</h2>
 							<ul>
 								{
-									//Map pver the urls and create photocomponents
-									//Key is just the index of the url in the photos array
+									/*Map pver the urls and create photocomponents*/
+									/*Key is just the index of the url in the photos array*/
 									this.props.photos.map( (ph, ind) => 
 									<Photo src={ph} key={ind} />)
 								}

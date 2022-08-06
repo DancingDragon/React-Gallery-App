@@ -25,13 +25,14 @@ class App extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			photos:[]
+			photos:[],
+			title:""
 		};
 	}
 	
 	fetchPhotoUrls = async (searchTerm) => {
 		//set loading to true while fetching imageurls
-		this.setState((prevState) => ({loading:true}));
+		this.setState((prevState) => ({loading:true, title:searchTerm}));
 		const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${searchTerm}&per_page=24&format=json&nojsoncallback=1`;
 		const res = await fetch(url);
 		const data = await res.json();
@@ -45,22 +46,23 @@ class App extends React.Component {
 		return (
 			<BrowserRouter>
 				<div className="container">
-					//search UI components
+				{/*search UI components*/}
 					<SearchForm />
 					<Nav />
 					
-					//Switch to only show first match
+					{/*Switch to only show first match*/}
 					<Switch>
-						//Let homescreen redirect to catssearch
+						{/*Let homescreen redirect to catssearch*/}
 						<Route exact path="/"> <Redirect to="/search/cats" /> </Route>
-						//Show photocontainer
+						{/*Show photocontainer*/}
 						<Route path="/search/:query"> 
 							<PhotoContainer 
 								photos={this.state.photos} 
 								loading={this.state.loading} 
-								fetchPhotoUrls={this.fetchPhotoUrls}/> 
+								fetchPhotoUrls={this.fetchPhotoUrls}
+								title={this.state.title}/> 
 						</Route>
-						//404 if url not matched
+						{/*//404 if url not matched*/}
 						<Route path="*" > <NotFound /> </Route>
 					</Switch>
 				</div>
