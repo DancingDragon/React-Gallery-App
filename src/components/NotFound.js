@@ -5,8 +5,7 @@ class NotFound extends React.Component {
 		return (
 			<ul>
 				<li className="not-found">
-					<h3>No Results Found</h3>
-					<p>Your search did not return any results. Please try again.</p>
+					<h1>404 Page Not Found</h1>
 				</li>
 			</ul>
 		);

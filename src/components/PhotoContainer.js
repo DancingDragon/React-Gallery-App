@@ -1,6 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router';
 import Photo from './Photo'
+import NoMatches from './NoMatches'
 
 class PhotoContainer extends React.Component {
 	query = "";
@@ -20,18 +21,30 @@ class PhotoContainer extends React.Component {
 	}
 	
 	render() {
-		return (
-			<div className="photo-container">
-				<h2>Results</h2>
-					<ul>
-						{this.props.photos.map( (ph, ind) => 
-						<Photo src={ph} key={ind} />
-						)}
-					</ul>
-					
-				
-			</div>
-		);
+		if (this.props.loading) {
+			return (
+				<p>Loading...</p>
+			);
+		} else {
+			if (this.props.photos.length > 0) {
+				return (
+					<div className="photo-container">
+						<h2>Results</h2>
+							<ul>
+								{this.props.photos.map( (ph, ind) => 
+								<Photo src={ph} key={ind} />
+								)}
+							</ul>
+							
+						
+					</div>
+				);
+			} else {
+				return (
+					<NoMatches />
+				);
+			}
+		}
 	}
 }
 
