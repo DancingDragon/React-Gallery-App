@@ -25,7 +25,7 @@ class PhotoContainer extends React.Component {
 		if (this.props.loading) {
 			return (
 				<div className="photo-container">
-					<h2>{this.props.title}</h2>
+					<h2>Pictures of {this.props.title}</h2>
 					<p>Loading...</p>
 				</div>
 			);
@@ -34,15 +34,15 @@ class PhotoContainer extends React.Component {
 			if (this.props.photos.length > 0) {
 				return (
 					<div className="photo-container">
-						<h2>{this.props.title}</h2>
-							<ul>
-								{
-									/*Map pver the urls and create photocomponents*/
-									/*Key is just the index of the url in the photos array*/
-									this.props.photos.map( (ph, ind) => 
-									<Photo src={ph} key={ind} />)
-								}
-							</ul>
+						<h2>Pictures of {this.props.title}</h2>
+						<ul>
+							{
+								/*Map pver the urls and create photocomponents*/
+								/*Key is just the index of the url in the photos array*/
+								this.props.photos.map( (ph, ind) => 
+								<Photo src={ph} key={ind} />)
+							}
+						</ul>
 					</div>
 				);
 			} else {
