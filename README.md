@@ -1,4 +1,5 @@
-# Getting Started with Create React App
+# React Gallery App
+This app ueses react and createreactapp and flickr api to show users pictures of whatever they search for.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
