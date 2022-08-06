@@ -2,13 +2,14 @@ import React from 'react'
 import { withRouter } from 'react-router';
 
 class SearchForm extends React.Component {
-	
+	//create a ref so we can read the value of the searchfield
 	searchInput = React.createRef();
 	
-		
+	
 	handleSubmit = (e) => {
 		e.preventDefault();
 		
+		//push the new searchurl to history
 		const path="/search/" + this.searchInput.current.value;
 		this.props.history.push(path);
 		e.target.reset();
